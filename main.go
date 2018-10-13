@@ -32,11 +32,6 @@ func main() {
     log.Fatal(err)
   }
 
-  http.HandleFunc("/", hello)
-  log.Printf("Listening on %s...\n", addr)
-  if err := http.ListenAndServe(addr, nil); err != nil {
-    panic(err)
-  }
 
   http.HandleFunc("/api", getApi)
   log.Fatal(http.ListenAndServe(addr,nil))
