@@ -26,8 +26,6 @@ func initApi(w http.ResponseWriter, r *http.Request) {
     		"version": "v1",
   	}
 	fmt.Fprintln(w,info)
-	content, _ := ioutil.ReadAll(r.Body)
-	fmt.Println(string(content))
 }
 
 func getApi(w http.ResponseWriter, r *http.Request) {
@@ -56,8 +54,8 @@ func main() {
 
 
   http.HandleFunc("/api", initApi)
-  log.Fatal(http.ListenAndServe(addr,nil))
+  log.Fatal(http.ListenAndServe(addr+"/api",nil))
 
   http.HandleFunc("/api", getApi)
-  log.Fatal(http.ListenAndServe(addr,nil))
+  log.Fatal(http.ListenAndServe(addr+"/api",nil))
 }
