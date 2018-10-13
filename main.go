@@ -29,7 +29,7 @@ func determineListenAddress() (string, error) {
 func initApi(w http.ResponseWriter, r *http.Request) {
   	
   	infoApi:=InfoApi {
-    		 Uptime: <uptime>,
+    		 Uptime: 100.0,
     		 Info: "Service for IGC tracks.",
     		 Version: "v1",
   	}
