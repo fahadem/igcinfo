@@ -21,9 +21,9 @@ func determineListenAddress() (string, error) {
 func initApi(w http.ResponseWriter, r *http.Request) {
   	
   	info:= map[string]interface{}{
-    		"uptime": "<uptime>"
-    		"info": "Service for IGC tracks."
-    		"version": "v1"
+    		"uptime": "<uptime>",
+    		"info": "Service for IGC tracks.",
+    		"version": "v1",
   	}
 	fmt.Fprintln(w,info)
 	content, _ := ioutil.ReadAll(r.Body)
