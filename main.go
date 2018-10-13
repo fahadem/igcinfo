@@ -5,6 +5,7 @@ import (
   "fmt"
   "net/http"
   "os"
+  "io/ioutil"
 )
 
 func determineListenAddress() (string, error) {
@@ -19,6 +20,12 @@ func hello(w http.ResponseWriter, r *http.Request) {
   fmt.Fprintln(w, "Hello World")
 }
 
+func getApi(w http.ResponseWriter, r *http.Request) {
+  fmt.Fprintln(w, "meta information about the API")
+  content, _ := ioutil.ReadAll(r.Body)
+  fmt.Println(string(content))
+}
+
 func main() {
   addr, err := determineListenAddress()
   if err != nil {
@@ -30,4 +37,7 @@ func main() {
   if err := http.ListenAndServe(addr, nil); err != nil {
     panic(err)
   }
+
+  http.HandleFunc("/api", getApi)
+  log.Fatal(hhtp.ListenAndServe(addr,nil)
 }
