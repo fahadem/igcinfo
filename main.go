@@ -23,6 +23,12 @@ func hello(w http.ResponseWriter, r *http.Request) {
 
 func getApi(w http.ResponseWriter, r *http.Request) {
   fmt.Fprintln(w, "<h1>meta information about the API<h1>")
+  info:= map[string]interface{}{
+    "uptime": <uptime>
+    "info": "Service for IGC tracks."
+    "version": "v1"
+  }
+  fmt.Fprintln(w,info)
   content, _ := ioutil.ReadAll(r.Body)
   fmt.Println(string(content))
 }
