@@ -26,7 +26,7 @@ func determineListenAddress() (string, error) {
 }
 
 func initApi(w http.ResponseWriter, r *http.Request) {
-  	
+  	http.Header.Add(w.Header(),"content-type","application/json")
   	infoApi:=InfoApi {
     		 Uptime: 100.0,
     		 Info: "Service for IGC tracks.",
@@ -36,7 +36,7 @@ func initApi(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(infoApi)
 }
 
-func getApi(w http.ResponseWriter, r *http.Request) {
+func getApi() {
 	addr, err := determineListenAddress()
 	if err != nil {
     		log.Fatal(err)
@@ -46,8 +46,8 @@ func getApi(w http.ResponseWriter, r *http.Request) {
       		log.Fatal(err)
    	}
 
-   	var infoApi map[string]interface{}
-   	err = json.NewDecoder(resp.Body).Decode(&infoApi)
+   	var infoApi Infoapi
+   	err := json.NewDecoder(resp.Body).Decode(&infoApi)
    	if err != nil {
       		log.Fatal(err)
    	}
