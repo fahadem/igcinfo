@@ -1,6 +1,7 @@
 package main
 
 import (
+  "encoding/json"
   "log"
   "fmt"
   "net/http"
@@ -17,28 +18,45 @@ func determineListenAddress() (string, error) {
   return ":" + port, nil
 }
 
-func hello(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintln(w, "Hello World")
+func initApi(w http.ResponseWriter, r *http.Request) {
+  	
+  	info:= map[string]interface{}{
+    		"uptime": "<uptime>"
+    		"info": "Service for IGC tracks."
+    		"version": "v1"
+  	}
+	fmt.Fprintln(w,info)
+	content, _ := ioutil.ReadAll(r.Body)
+	fmt.Println(string(content))
 }
 
 func getApi(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintln(w, "<h1>meta information about the API<h1>")
-  info:= map[string]interface{}{
-    "uptime": <uptime>
-    "info": "Service for IGC tracks."
-    "version": "v1"
-  }
-  fmt.Fprintln(w,info)
-  content, _ := ioutil.ReadAll(r.Body)
-  fmt.Println(string(content))
-}
+	addr, err := determineListenAddress()
+	if err != nil {
+    		log.Fatal(err)
+  	}
+	resp, err := http.Get(addr+"/api")
+   	if err != nil {
+      		log.Fatal(err)
+   	}
 
+   	var infoApi map[string]interface{}
+   	err = json.NewDecoder(resp.Body).Decode(&infoApi)
+   	if err != nil {
+      		log.Fatal(err)
+   	}
+
+   	fmt.Println(infoApi)
+}
 func main() {
   addr, err := determineListenAddress()
   if err != nil {
     log.Fatal(err)
   }
 
+
+  http.HandleFunc("/api", initApi)
+  log.Fatal(http.ListenAndServe(addr,nil))
 
   http.HandleFunc("/api", getApi)
   log.Fatal(http.ListenAndServe(addr,nil))
