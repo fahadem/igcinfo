@@ -31,7 +31,7 @@ func initApi(w http.ResponseWriter, r *http.Request) {
   	infoApi {
     		 Uptime: "<uptime>",
     		 Info: "Service for IGC tracks.",
-    		 Version: "v1"
+    		 Version: "v1",
   	}
 	fmt.Fprintln(w,infoApi)
 	content, _ := ioutil.ReadAll(r.Body)
