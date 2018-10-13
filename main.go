@@ -16,7 +16,7 @@ type InfoApi struct {
     Version string `json:"version,omitempty"`
 }
 
-type infoApi InfoApi
+
 
 func determineListenAddress() (string, error) {
   port := os.Getenv("PORT")
@@ -28,8 +28,8 @@ func determineListenAddress() (string, error) {
 
 func initApi(w http.ResponseWriter, r *http.Request) {
   	
-  	infoApi {
-    		 Uptime: "<uptime>",
+  	infoApi:=InfoApi {
+    		 Uptime: <uptime>,
     		 Info: "Service for IGC tracks.",
     		 Version: "v1",
   	}
