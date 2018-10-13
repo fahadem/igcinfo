@@ -32,10 +32,8 @@ func initApi(w http.ResponseWriter, r *http.Request) {
     		 Info: "Service for IGC tracks.",
     		 Version: "v1",
   	}
-	fmt.Fprintln(w,infoApi.Uptime)
-	fmt.Fprintln(w,infoApi.Info)
-	fmt.Fprintln(w,infoApi.Version)
-
+	
+	json.NewEncoder(w).Encode(infoApi)
 }
 
 func getApi(w http.ResponseWriter, r *http.Request) {
