@@ -56,7 +56,7 @@ func main() {
 
 
   http.HandleFunc("/api", initApi)
-  log.Fatal(http.ListenAndServe(addr+"/api/",nil))
+  log.Fatal(http.ListenAndServe(addr,nil))
 
   http.HandleFunc("/api", getApi)
   log.Fatal(http.ListenAndServe(addr,nil))
