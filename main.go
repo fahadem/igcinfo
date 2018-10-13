@@ -6,7 +6,7 @@ import (
   "net/http"
   "os"
   "io/ioutil"
-  "html/template"
+
 )
 
 func determineListenAddress() (string, error) {
