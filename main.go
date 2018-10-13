@@ -10,6 +10,14 @@ import (
 
 )
 
+type InfoApi struct {
+    Uptime float64 `json:"uptime,omitempty"`
+    Info string `json:"info,omitempty"`
+    Version string `json:"version,omitempty"`
+}
+
+type infoApi InfoApi
+
 func determineListenAddress() (string, error) {
   port := os.Getenv("PORT")
   if port == "" {
@@ -20,12 +28,12 @@ func determineListenAddress() (string, error) {
 
 func initApi(w http.ResponseWriter, r *http.Request) {
   	
-  	info:= map[string]interface{}{
-    		"uptime": "<uptime>",
-    		"info": "Service for IGC tracks.",
-    		"version": "v1",
+  	infoApi {
+    		 Uptime: "<uptime>",
+    		 Info: "Service for IGC tracks.",
+    		 Version: "v1"
   	}
-	fmt.Fprintln(w,info)
+	fmt.Fprintln(w,infoApi)
 	content, _ := ioutil.ReadAll(r.Body)
 	fmt.Println(string(content))
 }
@@ -58,6 +66,5 @@ func main() {
   http.HandleFunc("/api", initApi)
   log.Fatal(http.ListenAndServe(addr,nil))
 
-  http.HandleFunc("/api", getApi)
-  log.Fatal(http.ListenAndServe(addr,nil))
+  
 }
