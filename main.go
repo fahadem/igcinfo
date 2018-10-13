@@ -36,18 +36,11 @@ func initApi(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(infoApi)
 }
 
-func getApi() {
-	addr, err := determineListenAddress()
-	if err != nil {
-    		log.Fatal(err)
-  	}
-	resp, err := http.Get(addr+"/api")
-   	if err != nil {
-      		log.Fatal(err)
-   	}
+func getApi(w http.ResponseWriter, r *http.Request) {
+	
 
    	var infoApi Infoapi
-   	err := json.NewDecoder(resp.Body).Decode(&infoApi)
+   	err := json.NewDecoder(w).Decode(&infoApi)
    	if err != nil {
       		log.Fatal(err)
    	}
@@ -55,14 +48,17 @@ func getApi() {
    	fmt.Println(infoApi)
 }
 func main() {
-  addr, err := determineListenAddress()
-  if err != nil {
-    log.Fatal(err)
-  }
+  	addr, err := determineListenAddress()
+  	if err != nil {
+    		log.Fatal(err)
+  	}
 
 
-  http.HandleFunc("/api", initApi)
-  log.Fatal(http.ListenAndServe(addr,nil))
+  	http.HandleFunc("/api", initApi)
+  	log.Fatal(http.ListenAndServe(addr,nil))
+
+	http.HandleFunc("/api", getApi)
+  	log.Fatal(http.ListenAndServe(addr,nil))
 
   
 }
