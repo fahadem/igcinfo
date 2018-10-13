@@ -6,6 +6,7 @@ import (
   "net/http"
   "os"
   "io/ioutil"
+  "html/template"
 )
 
 func determineListenAddress() (string, error) {
@@ -21,7 +22,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func getApi(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintln(w, "meta information about the API")
+  fmt.Fprintln(w, "<h1>meta information about the API<h1>")
   content, _ := ioutil.ReadAll(r.Body)
   fmt.Println(string(content))
 }
