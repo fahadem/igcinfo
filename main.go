@@ -45,10 +45,10 @@ func getApi(w http.ResponseWriter, r *http.Request) {
       		log.Fatal(err)
    	}
 
-   	fmt.Println(infoApi)
+   	fmt.Println("%f,%s,%s",infoApi.Uptime,infoApi.Info,infoApi.Version)
 }
 func main() {
-  	addr, err := determineListenAddress()
+  	/*addr, err := determineListenAddress()
   	if err != nil {
     		log.Fatal(err)
   	}
@@ -58,7 +58,12 @@ func main() {
   	log.Fatal(http.ListenAndServe(addr,nil))
 
 	http.HandleFunc("/api", getApi)
-  	log.Fatal(http.ListenAndServe(addr,nil))
+  	log.Fatal(http.ListenAndServe(addr,nil))*/
 
-  
+  //http.HandleFunc("https://glacial-wave-53134.herokuapp.com/api", initApi)
+  	//log.Fatal(http.ListenAndServe("https://glacial-wave-53134.herokuapp.com/api",nil))
+
+	http.HandleFunc("https://glacial-wave-53134.herokuapp.com/api", getApi)
+
+  	log.Fatal(http.ListenAndServe("https://glacial-wave-53134.herokuapp.com",nil))
 }
