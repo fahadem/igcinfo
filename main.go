@@ -48,7 +48,7 @@ func getApi(w http.ResponseWriter, r *http.Request) {
    	fmt.Println(infoApi.Uptime)
 }
 func main() {
-  	/*addr, err := determineListenAddress()
+  	addr, err := determineListenAddress()
   	if err != nil {
     		log.Fatal(err)
   	}
@@ -57,7 +57,7 @@ func main() {
   	http.HandleFunc("/api", initApi)
   	log.Fatal(http.ListenAndServe(addr,nil))
 
-	http.HandleFunc("/api", getApi)
+	/*http.HandleFunc("/api", getApi)
   	log.Fatal(http.ListenAndServe(addr,nil))*/
 
 	resp, err := http.Get("https://glacial-wave-53134.herokuapp.com/api")
