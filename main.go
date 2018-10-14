@@ -30,9 +30,9 @@ func determineListenAddress() (string, error) {
 
 func initApi(w http.ResponseWriter, r *http.Request) {
   	http.Header.Add(w.Header(),"content-type","application/json")
-
+	t := time.Now()
   	infoApi:=InfoApi {
-    		 Uptime: time.Now().String(),
+    		 Uptime: t.String(),
     		 Info: "Service for IGC tracks.",
     		 Version: "v1",
   	}
