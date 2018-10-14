@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 	"time"
-	igc "github.com/marni/goigc"
+	"github.com/marni/goigc"
 )
 
 
