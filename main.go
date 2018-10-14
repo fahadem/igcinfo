@@ -57,12 +57,12 @@ func (db igcDB) Get(idWanted string) igcFile {
 
 func getApi(w http.ResponseWriter, r *http.Request) {
 	http.Header.Add(w.Header(), "content-type", "application/json")
-	//io.WriteString(w, "Api information :\n")
+
 	api := &API{}
 	api.Uptime = "uptime"
 	api.Info = "Service for IGC tracks."
 	api.Version = "version : v1"
-	//fmt.Fprintf(w, "%s\n%s\n%s", api.Uptime, api.Info, api.Version)
+
 	json.NewEncoder(w).Encode(api)
 
 }
@@ -163,6 +163,6 @@ func main() {
 	ids = nil
 	port := os.Getenv("PORT")
 	http.HandleFunc("/igcinfo/api", getApi)
-	http.HandleFunc("/igcinfo/api/igc/", igcHandler)
+	//http.HandleFunc("/igcinfo/api/igc/", igcHandler)
 	http.ListenAndServe(":"+port, nil)
 }
