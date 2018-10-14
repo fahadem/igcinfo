@@ -69,7 +69,7 @@ func main() {
 
   	http.HandleFunc("/api", initApi)
   	//http.HandleFunc("/api/igc", postIgc)
-resp,err = http.Post(addr+"/api/igc","application/json",strings.NewReader("{\"url\": http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc}"))
+resp,err := http.Post(addr+"/api/igc","application/json",strings.NewReader("{\"url\": http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc}"))
 	if err != nil {
       		log.Fatal(err)
    	}
