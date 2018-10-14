@@ -83,22 +83,5 @@ func main() {
    	}*/
   	log.Fatal(http.ListenAndServe(addr,nil))
   	
-	/*resp, err := http.Get(addr+"/api")
-   	if err != nil {
-      		log.Fatal(err)
-   	}
-
-   	var infoApi interface{}
-   	err = json.NewDecoder(resp.Body).Decode(&infoApi)
-   	if err != nil {
-      		log.Fatal(err)
-   	}
-
-   	fmt.Println(infoApi)
-
-	resp,err = http.Post(addr+"/api/igc","application/json",strings.NewReader("{\"url\": http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc}"))
-	if err != nil {
-      		log.Fatal(err)
-   	}*/
 }
 
