@@ -51,6 +51,14 @@ func getApi(w http.ResponseWriter, r *http.Request) {
 
    	fmt.Println(infoApi)
 }
+
+func postIgc(w http.ResponseWriter, r *http.Request) {
+  	http.Header.Add(w.Header(),"content-type","application/json")
+
+  	url:="http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc}"
+	json.NewEncoder(w).Encode(url)
+}
+
 /*var(
 	addr = "https://glacial-wave-53134.herokuapp.com"
 	infoapi interface{}
@@ -63,9 +71,9 @@ func main() {
 
 
   	http.HandleFunc("/api", initApi)
-
+  	http.HandleFunc("/api/igc", postIgc)
   	log.Fatal(http.ListenAndServe(addr,nil))
-  	http.HandleFunc("/api", getApi)
+  	//http.HandleFunc("/api", getApi)
 	/*router:=httprouter.New()
 	router.GET("/api",show)	
 	err:=http.ListenAndServe(*addr,router)
