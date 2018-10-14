@@ -59,12 +59,12 @@ func getApi(w http.ResponseWriter, r *http.Request) {
    	fmt.Println(infoApi)
 }
 
-func postIgc(w http.ResponseWriter, r *http.Request) {
+/*func postIgc(w http.ResponseWriter, r *http.Request) {
   	http.Header.Add(w.Header(),"content-type","application/json")
 
   	url:="http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc"
 	json.NewEncoder(w).Encode(url)
-}
+}*/
 
 
 func main() {
