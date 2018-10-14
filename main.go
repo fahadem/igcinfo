@@ -45,7 +45,7 @@ func getApi(w http.ResponseWriter, r *http.Request) {
       		log.Fatal(err)
    	}
 
-   	fmt.Println("%f,%s,%s",infoApi.Uptime,infoApi.Info,infoApi.Version)
+   	fmt.Println(infoApi.Uptime)
 }
 func main() {
   	addr, err := determineListenAddress()
