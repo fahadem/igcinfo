@@ -11,7 +11,7 @@ import (
 )
 
 type InfoApi struct {
-    Uptime string `json:"uptime,omitempty"`
+    Uptime time.Time `json:"uptime,omitempty"`
     Info string `json:"info,omitempty"`
     Version string `json:"version,omitempty"`
 }
@@ -32,7 +32,7 @@ func initApi(w http.ResponseWriter, r *http.Request) {
   	http.Header.Add(w.Header(),"content-type","application/json")
 
   	infoApi:=InfoApi {
-    		 Uptime: time.Now().String(),
+    		 Uptime: time.Now(),
     		 Info: "Service for IGC tracks.",
     		 Version: "v1",
   	}
