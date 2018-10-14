@@ -16,7 +16,7 @@ type InfoApi struct {
     Version string `json:"version,omitempty"`
 }
 
-
+var urlIgc string `json:"url,omitempty"`
 
 func determineListenAddress() (string, error) {
   port := os.Getenv("PORT")
@@ -55,7 +55,7 @@ func getApi(w http.ResponseWriter, r *http.Request) {
 func postIgc(w http.ResponseWriter, r *http.Request) {
   	http.Header.Add(w.Header(),"content-type","application/json")
 
-  	url:="http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc}"
+  	urlIgc:="http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc"
 	json.NewEncoder(w).Encode(url)
 }
 
