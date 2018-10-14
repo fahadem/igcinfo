@@ -38,13 +38,7 @@ func initApi(w http.ResponseWriter, r *http.Request) {
 	
 	json.NewEncoder(w).Encode(infoApi)
 
-	/*var infoApi2 InfoApi
-   	err := json.NewDecoder(r.Body).Decode(&infoApi2)
-   	if err != nil {
-      		log.Fatal(err)
-   	}
-
-   	fmt.Println(infoApi)*/
+	
 }
 
 func getApi(w http.ResponseWriter, r *http.Request) {
@@ -59,12 +53,12 @@ func getApi(w http.ResponseWriter, r *http.Request) {
    	fmt.Println(infoApi)
 }
 
-func postIgc(w http.ResponseWriter, r *http.Request) {
+/*func postIgc(w http.ResponseWriter, r *http.Request) {
   	http.Header.Add(w.Header(),"content-type","application/json")
 
   	url:="http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc"
 	json.NewEncoder(w).Encode(url)
-}
+}*/
 
 
 func main() {
