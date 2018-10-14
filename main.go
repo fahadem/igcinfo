@@ -11,7 +11,7 @@ import (
 )
 
 type InfoApi struct {
-    Uptime *Time `json:"uptime,omitempty"`
+    Uptime string `json:"uptime,omitempty"`
     Info string `json:"info,omitempty"`
     Version string `json:"version,omitempty"`
 }
