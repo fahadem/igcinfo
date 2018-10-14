@@ -60,7 +60,7 @@ func main() {
 	http.HandleFunc("/api", getApi)
   	log.Fatal(http.ListenAndServe(addr,nil))*/
 
-  //http.HandleFunc("https://glacial-wave-53134.herokuapp.com/api", initApi)
+  http.HandleFunc("https://glacial-wave-53134.herokuapp.com/api", initApi)
   	//log.Fatal(http.ListenAndServe("https://glacial-wave-53134.herokuapp.com/api",nil))
 
 	http.HandleFunc("https://glacial-wave-53134.herokuapp.com/api", getApi)
