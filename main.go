@@ -73,7 +73,7 @@ func main() {
   	if err != nil {
     		log.Fatal(err)
   	}
-
+//Api_Root := "https://glacial-wave-53134.herokuapp.com"
 
   	http.HandleFunc("/api", initApi)
   	http.HandleFunc("/api/igc", postIgc)
