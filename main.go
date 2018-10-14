@@ -6,7 +6,7 @@ import (
   "fmt"
   "net/http"
   "os"
-
+  "strings"
 )
 
 type InfoApi struct {
@@ -45,7 +45,7 @@ func getApi(w http.ResponseWriter, r *http.Request) {
       		log.Fatal(err)
    	}
 
-   	fmt.Println(infoApi)
+   	fmt.Println(m)
 }
 func main() {
   	addr, err := determineListenAddress()
