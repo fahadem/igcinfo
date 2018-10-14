@@ -11,7 +11,7 @@ import (
 )
 
 type InfoApi struct {
-    Uptim string `json:"uptime,omitempty"`
+    Uptime string `json:"uptime,omitempty"`
     Info string `json:"info,omitempty"`
     Version string `json:"version,omitempty"`
 }
@@ -30,9 +30,9 @@ func determineListenAddress() (string, error) {
 
 func initApi(w http.ResponseWriter, r *http.Request) {
   	http.Header.Add(w.Header(),"content-type","application/json")
-	t := time.Now()
+
   	infoApi:=InfoApi {
-    		 Uptime: t.String(),
+    		 Uptime: time.Now().String(),
     		 Info: "Service for IGC tracks.",
     		 Version: "v1",
   	}
