@@ -39,13 +39,13 @@ func initApi(w http.ResponseWriter, r *http.Request) {
 func getApi(w http.ResponseWriter, r *http.Request) {
 	
 
-   	var infoApi Infoapi
+   	var infoApi InfoApi
    	err := json.NewDecoder(r.Body).Decode(&infoApi)
    	if err != nil {
       		log.Fatal(err)
    	}
 
-   	fmt.Println(m)
+   	fmt.Println(infoApi)
 }
 func main() {
   	addr, err := determineListenAddress()
