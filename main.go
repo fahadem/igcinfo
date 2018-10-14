@@ -6,7 +6,7 @@ import (
   "fmt"
   "net/http"
   "os"
-  //"strings"
+  "strings"
   "time"
 )
 
@@ -16,7 +16,7 @@ type InfoApi struct {
     Version string `json:"version,omitempty"`
 }
 
-var urlIgc string `json:"url,omitempty"`
+
 
 func determineListenAddress() (string, error) {
   port := os.Getenv("PORT")
@@ -55,14 +55,11 @@ func getApi(w http.ResponseWriter, r *http.Request) {
 func postIgc(w http.ResponseWriter, r *http.Request) {
   	http.Header.Add(w.Header(),"content-type","application/json")
 
-  	urlIgc:="http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc"
+  	url:="http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc"
 	json.NewEncoder(w).Encode(url)
 }
 
-/*var(
-	addr = "https://glacial-wave-53134.herokuapp.com"
-	infoapi interface{}
-)*/
+
 func main() {
   	addr, err := determineListenAddress()
   	if err != nil {
@@ -71,15 +68,13 @@ func main() {
 
 
   	http.HandleFunc("/api", initApi)
-  	http.HandleFunc("/api/igc", postIgc)
-  	log.Fatal(http.ListenAndServe(addr,nil))
-  	//http.HandleFunc("/api", getApi)
-	/*router:=httprouter.New()
-	router.GET("/api",show)	
-	err:=http.ListenAndServe(*addr,router)
+  	//http.HandleFunc("/api/igc", postIgc)
+resp,err = http.Post(addr+"/api/igc","application/json",strings.NewReader("{\"url\": http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc}"))
 	if err != nil {
       		log.Fatal(err)
-   	}*/
+   	}
+  	log.Fatal(http.ListenAndServe(addr,nil))
+  	
 	/*resp, err := http.Get(addr+"/api")
    	if err != nil {
       		log.Fatal(err)
@@ -99,6 +94,3 @@ func main() {
    	}*/
 }
 
-/*func show(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	fmt.Fprintf(w,"Read info api: %s",infoapi)
-}*/
