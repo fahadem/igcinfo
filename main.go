@@ -6,7 +6,7 @@ import (
   "fmt"
   "net/http"
   "os"
-  "strings"
+
 )
 
 type InfoApi struct {
@@ -40,7 +40,7 @@ func getApi(w http.ResponseWriter, r *http.Request) {
 	
 
    	var m Message
-   	err := json.NewDecoder(w.Body).Decode(&m)
+   	err := json.NewDecoder(r.Body).Decode(&m)
    	if err != nil {
       		log.Fatal(err)
    	}
