@@ -63,9 +63,9 @@ func main() {
 
 
   	http.HandleFunc("/api", initApi)
-  	http.HandleFunc("/api", getApi)
-  	log.Fatal(http.ListenAndServe(addr,nil))
 
+  	log.Fatal(http.ListenAndServe(addr,nil))
+  	http.HandleFunc("/api", getApi)
 	/*router:=httprouter.New()
 	router.GET("/api",show)	
 	err:=http.ListenAndServe(*addr,router)
