@@ -39,13 +39,13 @@ func initApi(w http.ResponseWriter, r *http.Request) {
 	
 	json.NewEncoder(w).Encode(infoApi)
 
-	var infoApi2 InfoApi
+	/*var infoApi2 InfoApi
    	err := json.NewDecoder(r.Body).Decode(&infoApi2)
    	if err != nil {
       		log.Fatal(err)
    	}
 
-   	fmt.Println(infoApi)
+   	fmt.Println(infoApi)*/
 }
 
 func getApi(w http.ResponseWriter, r *http.Request) {
