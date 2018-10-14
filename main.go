@@ -75,7 +75,7 @@ func main() {
 
 
   	http.HandleFunc("/api", initApi)
-  	http.HandleFunc("/api/igc", postIgc)
+  	//http.HandleFunc("/api/igc", postIgc)
 	
   	log.Fatal(http.ListenAndServe(addr,nil))
   	
