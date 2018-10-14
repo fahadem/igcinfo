@@ -11,6 +11,7 @@ import (
 	igc "github.com/marni/goigc"
 )
 
+
 type igcTrack struct {
 	H_date       string  //"H_date": <date from File Header, H-record>,
 	Pilot        string  //"pilot": <pilot>,
