@@ -40,7 +40,7 @@ func getApi(w http.ResponseWriter, r *http.Request) {
 	
 
    	var m Message
-   	err := json.NewDecoder(strings.NewReader(w)).Decode(&m)
+   	err := json.NewDecoder(w.Body).Decode(&m)
    	if err != nil {
       		log.Fatal(err)
    	}
