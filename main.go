@@ -39,8 +39,8 @@ func initApi(w http.ResponseWriter, r *http.Request) {
 func getApi(w http.ResponseWriter, r *http.Request) {
 	
 
-   	var m Message
-   	err := json.NewDecoder(r.Body).Decode(&m)
+   	var infoApi Infoapi
+   	err := json.NewDecoder(r.Body).Decode(&infoApi)
    	if err != nil {
       		log.Fatal(err)
    	}
