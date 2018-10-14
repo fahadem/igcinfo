@@ -51,15 +51,15 @@ func getApi(w http.ResponseWriter, r *http.Request) {
 
    	fmt.Println(infoApi)
 }
-var(
+/*var(
 	addr = "https://glacial-wave-53134.herokuapp.com"
 	infoapi interface{}
-)
+)*/
 func main() {
-  	/*addr, err := determineListenAddress()
+  	addr, err := determineListenAddress()
   	if err != nil {
     		log.Fatal(err)
-  	}*/
+  	}
 
 
   	http.HandleFunc("/api", initApi)
