@@ -11,7 +11,7 @@ import (
 )
 
 type InfoApi struct {
-    Uptime float64 `json:"uptime,omitempty"`
+    Uptime Time `json:"uptime,omitempty"`
     Info string `json:"info,omitempty"`
     Version string `json:"version,omitempty"`
 }
@@ -89,6 +89,6 @@ func main() {
    	}*/
 }
 
-func show(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+/*func show(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	fmt.Fprintf(w,"Read info api: %s",infoapi)
-}
+}*/
