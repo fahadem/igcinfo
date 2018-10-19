@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 	"time"
-	"github.com/marni/goigc"
+	igc"github.com/marni/goigc"
 )
 
 
@@ -20,7 +20,7 @@ type igcTrack struct {
 	Track_length float64 //"track_length": <calculated total track length>
 }
 
-type API struct {
+type Api struct {
 	Uptime time.Time `json:"uptime,omitempty"`
 	Info string `json:"info,omitempty"`
 	Version string `json:"version,omitempty"`
@@ -59,7 +59,7 @@ func (db igcDB) Get(idWanted string) igcFile {
 func getApi(w http.ResponseWriter, r *http.Request) {
 	http.Header.Add(w.Header(), "content-type", "application/json")
 
-	api := API{Uptime: time.Now(),
+	api := Api{Uptime: time.Now(),
     		 Info: "Service for IGC tracks.",
     		 Version: "v1",
 	}
@@ -137,12 +137,6 @@ func igcHandler(w http.ResponseWriter, r *http.Request) {
 					fmt.Fprintln(w, "Use format id0 or id21 for exemple")
 				}
 			}
-			/*if parts[5]  {
-				fmt.Fprintln(w, "case field")
-				/*infoWanted := parts[5]
-				id := parts[4]
-
-			}*/
 
 		}
 	default:
@@ -163,6 +157,6 @@ func main() {
 	ids = nil
 	port := os.Getenv("PORT")
 	http.HandleFunc("/igcinfo/api", getApi)
-	//http.HandleFunc("/igcinfo/api/igc/", igcHandler)
+	http.HandleFunc("/igcinfo/api/igc/", igcHandler)
 	http.ListenAndServe(":"+port, nil)
 }
