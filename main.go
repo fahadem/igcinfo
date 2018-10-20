@@ -28,7 +28,7 @@ func determineListenAddress() (string, error) {
 
 
 func initApi(w http.ResponseWriter, r *http.Request) {
-  	http.Header.Add(w.Header(),"content-type","application/json")
+  	//http.Header.Add(w.Header(),"content-type","application/json")
 
   	infoApi:=InfoApi {
     		 Uptime: time.Now(),
@@ -38,13 +38,6 @@ func initApi(w http.ResponseWriter, r *http.Request) {
 	
 	json.NewEncoder(w).Encode(infoApi)
 
-	/*var infoApi2 InfoApi
-   	err := json.NewDecoder(r.Body).Decode(&infoApi2)
-   	if err != nil {
-      		log.Fatal(err)
-   	}
-
-   	fmt.Println(infoApi)*/
 }
 
 func getApi(w http.ResponseWriter, r *http.Request) {
