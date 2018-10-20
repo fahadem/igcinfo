@@ -27,7 +27,7 @@ type Api struct {
 
 }
 type igcFile struct {
-	Url string //a valid igc URL
+	Url string `json:"url,omitempty"`
 }
 
 type igcDB struct {
@@ -141,7 +141,7 @@ func igcHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	default:
 
-		http.Error(w, "not implemented yet", http.StatusNotImplemented)
+		http.Error(w, "Only GET and POST methods are supported", http.StatusNotImplemented)
 
 	}
 }
