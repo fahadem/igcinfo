@@ -67,7 +67,7 @@ func main() {
   	}
 
 
-  	http.HandleFunc("https://pure-ocean-33607.herokuapp.com/api", initApi)
+  	http.HandleFunc("/api", initApi)
   	//http.HandleFunc("/api/igc", postIgc)
 	
   	log.Fatal(http.ListenAndServe(addr,nil))
