@@ -157,6 +157,6 @@ func main() {
 	ids = nil
 	port := os.Getenv("PORT")
 	http.HandleFunc("/igcinfo/api", getApi)
-	//http.HandleFunc("/igcinfo/api/igc/", igcHandler)
+	http.HandleFunc("/igcinfo/api/igc/", igcHandler)
 	http.ListenAndServe(":"+port, nil)
 }
