@@ -69,7 +69,7 @@ func getApi(w http.ResponseWriter, r *http.Request) {
 }
 
 func igcHandler(w http.ResponseWriter, r *http.Request) {
-
+	http.Header.Add(w.Header(), "content-type", "application/json")
 	switch r.Method {
 	case "POST":
 		{
@@ -83,8 +83,8 @@ func igcHandler(w http.ResponseWriter, r *http.Request) {
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusBadRequest)
 			}
-			igc.Url ="http://skypolaris.org/wp-content/uploads/IGS%20Files/Madrid%20to%20Jerez.igc"
-			fmt.Fprintf(w, "URL : %s\n", igc.Url)
+			
+
 			Idstr := "id"
 			strValue := fmt.Sprintf("%d", idCount)
 			newId := Idstr + strValue
@@ -96,22 +96,22 @@ func igcHandler(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		{
 			//GET case
-			http.Header.Add(w.Header(), "content-type", "application/json")
+
 			parts := strings.Split(r.URL.Path, "/")
 			
 			if len(parts) < 5 || len(parts) > 6 {
 				//deal with errors
-				fmt.Fprintln(w, "wrong numbers of parameters")
+				fmt.Fprintln(w, "404")
 				return
 			}
 			if parts[4] == "" {
 				//deal with the array
-				fmt.Fprintln(w, "Display the array")
+
 				json.NewEncoder(w).Encode(ids)
 
 			}
 			if parts[4] != "" {
-				fmt.Fprintln(w, "Information about the id")
+
 				//deal with the id
 				var igcWanted igcFile
 				rgx, _ := regexp.Compile("^id[0-9]*")
